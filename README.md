@@ -198,17 +198,10 @@ $$MAP@K = \frac{1}{|U|} \sum_{u \in U} AP@K(u)$$
 
 ---
 
-## 📄 Technical Report & Presentation
-
-- **Report**: Open `report/report.html` in Chrome → Print as PDF (enable "Background graphics")
-- **Slides**: Open `presentation/slides.html` in Chrome → Print as PDF (A4 Landscape)
-
----
-
 ## 🔗 References
 
 1. Netflix Prize — BellKor's Pragmatic Chaos solution (2009)
 2. Koren, Y. (2008). *Factorization Meets the Neighborhood: a Multifaceted Collaborative Filtering Model.* KDD.
-3. He, X. et al. (2017). *Neural Collaborative Filtering.* WWW.
+3. He, X. et al. (2017). *Neural Collaborative Filtering.
 4. He, X. et al. (2020). *LightGCN: Simplifying and Powering GNN for Recommendation.* SIGIR.
 5. Rendle, S. et al. (2009). *BPR: Bayesian Personalized Ranking.* UAI.
