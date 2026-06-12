@@ -1,0 +1,38 @@
+# Data
+data/raw/
+data/processed/
+*.parquet
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Results & outputs (ignore generated files, keep key results)
+results/figures/
+results/metrics/
+!results/model_comparison.json
+!results/predictions/
+
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# Experiment tracking
+wandb/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

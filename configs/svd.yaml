@@ -1,0 +1,11 @@
+# SVD (Surprise library) — Matrix Factorization
+# ================================================
+model: svd
+
+params:
+  n_factors: 150
+  n_epochs: 30
+  lr_all: 0.005
+  reg_all: 0.02
+  biased: true
+  random_state: 42

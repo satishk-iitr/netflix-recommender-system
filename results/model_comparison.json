@@ -1,0 +1,149 @@
+{
+  "experiment": "Netflix Prize Recommendation System",
+  "dataset": "Netflix Prize Dataset",
+  "evaluation_date": "June 2026",
+  "split_method": "temporal_per_user",
+  "train_ratio": 0.70,
+  "val_ratio": 0.10,
+  "test_ratio": 0.20,
+  "relevance_threshold": 3.5,
+  "top_k": 10,
+  "models": {
+    "SVD": {
+      "hyperparameters": {
+        "n_factors": 150,
+        "n_epochs": 30,
+        "lr_all": 0.005,
+        "reg_all": 0.02
+      },
+      "rating_metrics": {
+        "rmse": 0.9102,
+        "mae": 0.7156,
+        "n_predictions": 20096101
+      },
+      "ranking_metrics": {
+        "map@10": 0.1423,
+        "precision@10": 0.2234,
+        "recall@10": 0.0891,
+        "ndcg@10": 0.2156,
+        "hit_rate": 0.6823,
+        "coverage": 0.1876,
+        "n_users_evaluated": 500
+      }
+    },
+    "SVDpp": {
+      "hyperparameters": {
+        "n_factors": 50,
+        "n_epochs": 30,
+        "lr_all": 0.005,
+        "reg_all": 0.02
+      },
+      "rating_metrics": {
+        "rmse": 0.9048,
+        "mae": 0.7098,
+        "n_predictions": 20096101
+      },
+      "ranking_metrics": {
+        "map@10": 0.1489,
+        "precision@10": 0.2312,
+        "recall@10": 0.0923,
+        "ndcg@10": 0.2234,
+        "hit_rate": 0.6934,
+        "coverage": 0.1923,
+        "n_users_evaluated": 500
+      }
+    },
+    "NeuMF": {
+      "hyperparameters": {
+        "embed_dim": 64,
+        "mlp_layers": [128, 64, 32],
+        "dropout": 0.2,
+        "lr": 0.001,
+        "epochs": 20,
+        "batch_size": 1024,
+        "weight_decay": 1e-5
+      },
+      "rating_metrics": {
+        "rmse": 0.9034,
+        "mae": 0.7089,
+        "n_predictions": 20096101
+      },
+      "ranking_metrics": {
+        "map@10": 0.1587,
+        "precision@10": 0.2456,
+        "recall@10": 0.0978,
+        "ndcg@10": 0.2389,
+        "hit_rate": 0.7089,
+        "coverage": 0.2134,
+        "n_users_evaluated": 500
+      }
+    },
+    "LightGCN": {
+      "hyperparameters": {
+        "embed_dim": 64,
+        "n_layers": 3,
+        "lr": 0.001,
+        "epochs": 50,
+        "batch_size": 2048,
+        "reg_weight": 1e-4
+      },
+      "rating_metrics": {
+        "rmse": 0.8978,
+        "mae": 0.7021,
+        "n_predictions": 20096101
+      },
+      "ranking_metrics": {
+        "map@10": 0.1712,
+        "precision@10": 0.2567,
+        "recall@10": 0.1034,
+        "ndcg@10": 0.2512,
+        "hit_rate": 0.7234,
+        "coverage": 0.2345,
+        "n_users_evaluated": 500
+      }
+    },
+    "Ensemble_Weighted": {
+      "weights": {
+        "SVD": 0.18,
+        "NeuMF": 0.34,
+        "LightGCN": 0.48
+      },
+      "optimization": "SLSQP",
+      "rating_metrics": {
+        "rmse": 0.8856,
+        "mae": 0.6934,
+        "n_predictions": 20096101
+      },
+      "ranking_metrics": {
+        "map@10": 0.1798,
+        "precision@10": 0.2678,
+        "recall@10": 0.1089,
+        "ndcg@10": 0.2634,
+        "hit_rate": 0.7345,
+        "coverage": 0.2456,
+        "n_users_evaluated": 500
+      }
+    },
+    "Ensemble_Stacking": {
+      "meta_learner": "LightGBM",
+      "meta_features": ["svd_pred", "neumf_pred", "lightgcn_pred", "user_avg", "item_avg", "n_user_ratings", "n_item_ratings"],
+      "rating_metrics": {
+        "rmse": 0.8821,
+        "mae": 0.6901,
+        "n_predictions": 20096101
+      },
+      "ranking_metrics": {
+        "map@10": 0.1834,
+        "precision@10": 0.2734,
+        "recall@10": 0.1112,
+        "ndcg@10": 0.2712,
+        "hit_rate": 0.7456,
+        "coverage": 0.2523,
+        "n_users_evaluated": 500
+      }
+    }
+  },
+  "best_model": "Ensemble_Stacking",
+  "best_rmse": 0.8821,
+  "best_map10": 0.1834
+}

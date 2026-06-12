@@ -1,0 +1,14 @@
+# NeuMF — Neural Matrix Factorization (PyTorch)
+# ================================================
+model: neumf
+
+params:
+  embed_dim: 64
+  mlp_layers: [128, 64, 32]
+  dropout: 0.2
+  lr: 0.001
+  weight_decay: 0.00001
+  epochs: 20
+  batch_size: 1024
+  neg_samples: 4
+  random_state: 42
